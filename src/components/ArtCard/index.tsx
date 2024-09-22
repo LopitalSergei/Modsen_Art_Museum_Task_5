@@ -7,6 +7,7 @@ import defaultImage from '@assets/defaultImage.svg';
 import { useState } from 'react';
 import { ArtInfo } from 'types/ArtInterfaces';
 import { LocalStorage } from '@utils/localStorage';
+import { domain } from '@constants/constants';
 
 export const ArtCard = (artCardProps: ArtInfo) => {
   const [isFavorite, setIsFavorite] = useState(() => {
@@ -29,6 +30,7 @@ export const ArtCard = (artCardProps: ArtInfo) => {
           <S.ArtImg
             src={getArtImage(artCardProps.image_id)}
             alt="Image not found"
+            title={artCardProps.title}
             onError={({ currentTarget }) => {
               currentTarget.src = defaultImage;
             }}
@@ -40,11 +42,11 @@ export const ArtCard = (artCardProps: ArtInfo) => {
           <S.ArtName>{artCardProps.title}</S.ArtName>
           <S.ArtistName>{artCardProps.artist_title}</S.ArtistName>
           <S.Availability>
-            {artCardProps.is_public_domain ? 'Public' : 'Private'}
+            {artCardProps.is_public_domain ? domain.public : domain.private}
           </S.Availability>
         </S.ArtDescriptionBlock>
         <S.FavoriteMarkBlock onClick={handleClick}>
-          <S.FavoriteMark src={isFavorite ? markActive : mark} />
+          <S.FavoriteMark src={isFavorite ? markActive : mark} alt="mark" />
         </S.FavoriteMarkBlock>
       </S.ArtDescription>
     </S.Card>

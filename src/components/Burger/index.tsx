@@ -14,7 +14,7 @@ export const Burger = () => {
       <NavLinksRow open={open}>
         {navLinks.map(({ page, href, icon }) => (
           <NavigationLink to={href} key={page}>
-            <img src={icon}></img>
+            <img src={icon} alt="icon" />
             <span>{page}</span>
           </NavigationLink>
         ))}

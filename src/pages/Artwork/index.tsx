@@ -9,6 +9,7 @@ import defaultImage from '@assets/defaultImage.svg';
 import { LocalStorage } from '@utils/localStorage';
 import mark from '@assets/icons/bookmark.svg';
 import markActive from '@assets/icons/bookmarkActive.svg';
+import { domain } from '@constants/constants';
 
 export default function Artwork() {
   const params = useParams();
@@ -53,12 +54,13 @@ export default function Artwork() {
             <S.ArtImage
               src={getArtImage(art.image_id)}
               alt="Image not found"
+              title={art.title}
               onError={({ currentTarget }) => {
                 currentTarget.src = defaultImage;
               }}
             />
             <S.FavoriteMarkBlock onClick={handleClick}>
-              <S.FavoriteMark src={isFavorite ? markActive : mark} />
+              <S.FavoriteMark src={isFavorite ? markActive : mark} alt="mark" />
             </S.FavoriteMarkBlock>
           </S.ImageContainer>
           <S.DescriptionColumn>
@@ -80,7 +82,7 @@ export default function Artwork() {
               <p>
                 <span>Repository:</span> {art.place_of_origin}
               </p>
-              <p>{art.is_public_domain ? 'Public' : 'Private'}</p>
+              <p>{art.is_public_domain ? domain.public : domain.private}</p>
             </S.Overview>
           </S.DescriptionColumn>
         </S.ArtRow>
