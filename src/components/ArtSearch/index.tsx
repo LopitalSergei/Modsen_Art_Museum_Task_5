@@ -53,12 +53,10 @@ export const ArtSearch = () => {
           setArts(artData.data);
           setIsSuccessSearch(true);
         } else {
-          console.log('else');
           handlePrevPageClick();
           setIsSuccessSearch(false);
         }
       };
-      console.log('fetch ', url);
 
       dataFetch(url);
     } catch (err) {
