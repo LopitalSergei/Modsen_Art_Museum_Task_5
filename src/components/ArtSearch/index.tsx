@@ -7,7 +7,7 @@ import { Loader } from '@components/ui/Loader';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtsList } from '@components/ArtsList';
 import { useDebounce } from '@hooks/useDebounce';
-import { ArtInfo, PaginationInfo } from 'types/artInterfaces';
+import { ArtInfo, PaginationInfo } from 'types/ArtInterfaces';
 
 export const ArtSearch = () => {
   const [inputValue, setInputValue] = useState('');

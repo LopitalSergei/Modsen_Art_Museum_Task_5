@@ -1,7 +1,7 @@
 import { Container } from '@styles/global';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArtMoreInfo } from 'types/artInterfaces';
+import { ArtMoreInfo } from 'types/ArtInterfaces';
 import * as S from './styled';
 import { Loader } from '@components/ui/Loader';
 

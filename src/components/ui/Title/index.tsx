@@ -1,4 +1,4 @@
-import { TextProps } from 'types/artInterfaces';
+import { TextProps } from 'types/ArtInterfaces';
 import { TitleText } from './styled';
 
 export const Title = ({ text }: TextProps) => {

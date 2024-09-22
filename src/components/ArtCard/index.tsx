@@ -8,7 +8,7 @@ import defaultImage from '@assets/defaultImage.svg';
 
 import { LocalStorage } from '@utils/localStorage';
 import { DOMAIN } from '@constants/constants';
-import { ArtInfo } from 'types/artInterfaces';
+import { ArtInfo } from 'types/ArtInterfaces';
 
 export const ArtCard = (artCardProps: ArtInfo) => {
   const [isFavorite, setIsFavorite] = useState(() => {
