@@ -3,7 +3,7 @@ import * as S from './styled';
 
 import search from '@assets/icons/search.svg';
 import { Container } from '@styles/global';
-import { Loader } from '@components/Loader';
+import { Loader } from '@components/ui/Loader';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtsList } from '@components/ArtsList';
 import { useDebounce } from '@hooks/useDebounce';

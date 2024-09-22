@@ -1,7 +1,7 @@
 import { ArtCard } from '@components/ArtCard';
 import { ArtsListI } from 'types/artInterfaces';
 import { ArtRow } from './styled';
-import { Loader } from '@components/Loader';
+import { Loader } from '@components/ui/Loader';
 
 export const ArtsList = ({ arts }: ArtsListI) => {
   if (!arts?.length) {

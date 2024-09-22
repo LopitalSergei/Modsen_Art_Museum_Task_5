@@ -3,7 +3,7 @@ import { HeaderNav, HeaderRow, Logo } from './styled';
 import { Container } from '@styles/global';
 import museumLogo from '@assets/logos/museum-logo.svg';
 import { Link } from 'react-router-dom';
-import { Burger } from '@components/Burger';
+import { Burger } from '@components/ui/Burger';
 
 export const Header: FC = () => {
   return (
