@@ -7,13 +7,14 @@ import { Loader } from '@components/ui/Loader';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtsList } from '@components/ArtsList';
 import { useDebounce } from '@hooks/useDebounce';
-import { ArtInfo } from 'types/artInterfaces';
+import { ArtInfo, PaginationInfo } from 'types/artInterfaces';
 
 export const ArtSearch = () => {
   const [inputValue, setInputValue] = useState('');
   const debouncedInputValue = useDebounce(inputValue);
 
   const [arts, setArts] = useState<ArtInfo[]>([]);
+  const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>();
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessSearch, setIsSuccessSearch] = useState(true);
@@ -28,6 +29,9 @@ export const ArtSearch = () => {
         const artData = await fetch(url).then((res) => res.json());
         if (artData.data.length !== 0) {
           setArts(artData.data);
+          setPaginationInfo(artData.pagination);
+          console.log(paginationInfo);
+
           setIsSuccessSearch(true);
         } else {
           handlePrevPageClick();
@@ -53,10 +57,16 @@ export const ArtSearch = () => {
     setPage((prev) => (prev - 1 <= 1 ? 1 : prev - 1));
   };
 
+  const handlePageClick = (page: number) => {
+    setPage(page);
+  };
+
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+
     setInputValue(() => {
       setPage(1);
-      return e.currentTarget.value;
+      return value;
     });
   };
 
@@ -86,7 +96,19 @@ export const ArtSearch = () => {
           <ArtsList arts={arts} />
           <S.Pagination>
             <S.ButtonLeft onClick={handlePrevPageClick}></S.ButtonLeft>
-            <S.PageCounter>{page}</S.PageCounter>
+
+            <S.ActivePageCounter onClick={() => handlePageClick(page)}>
+              {page}
+            </S.ActivePageCounter>
+            <S.PageCounter onClick={() => handlePageClick(page + 1)}>
+              {page + 1}
+            </S.PageCounter>
+            <S.PageCounter onClick={() => handlePageClick(page + 2)}>
+              {page + 2}
+            </S.PageCounter>
+            <S.PageCounter onClick={() => handlePageClick(page + 3)}>
+              {page + 3}
+            </S.PageCounter>
             <S.ButtonRight onClick={handleNextPageClick}></S.ButtonRight>
           </S.Pagination>
         </>

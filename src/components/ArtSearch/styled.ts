@@ -38,6 +38,7 @@ export const Pagination = styled.div`
   justify-content: end;
   align-items: center;
   margin-bottom: ${({ theme }) => theme.sizes.margin2x};
+  gap: ${({ theme }) => theme.sizes.marginMini};
 `;
 
 export const ButtonLeft = styled.div`
@@ -67,5 +68,14 @@ export const ButtonRight = styled.div`
 `;
 
 export const PageCounter = styled.div`
+  cursor: pointer;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  background: ${({ theme }) => theme.colors.favoriteMark};
+  padding: ${({ theme }) => theme.sizes.marginMini};
+  border-radius: ${({ theme }) => theme.sizes.marginMini};
+`;
+
+export const ActivePageCounter = styled(PageCounter)`
+  background: ${({ theme }) => theme.colors.mainAccent};
+  color: ${({ theme }) => theme.colors.whiteText};
 `;

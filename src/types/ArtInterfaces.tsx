@@ -21,3 +21,10 @@ export interface ArtsListI {
 export interface TextProps {
   text: string;
 }
+
+export interface PaginationInfo {
+  total_pages: number;
+  total: number;
+  limit: number;
+  current_page: number;
+}
