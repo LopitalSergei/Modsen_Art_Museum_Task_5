@@ -7,10 +7,11 @@ import { Loader } from '@components/Loader';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtsList } from '@components/ArtsList';
 import { ArtInfo } from 'types/ArtInterfaces';
+import { useDebounce } from '@hooks/useDebounce';
 
 export const ArtSearch = () => {
   const [inputValue, setInputValue] = useState('');
-  const [debouncedInputValue, setDebouncedInputValue] = useState('');
+  const debouncedInputValue = useDebounce(inputValue);
 
   const [arts, setArts] = useState<ArtInfo[]>([]);
   const [page, setPage] = useState(1);
@@ -43,13 +44,6 @@ export const ArtSearch = () => {
       setIsLoading(false);
     }
   }, [debouncedInputValue, page]);
-
-  useEffect(() => {
-    const delayInputTimeoutId = setTimeout(() => {
-      setDebouncedInputValue(inputValue);
-    }, 1000);
-    return () => clearTimeout(delayInputTimeoutId);
-  }, [inputValue]);
 
   const handleNextPageClick = () => {
     setPage((prev) => prev + 1);
