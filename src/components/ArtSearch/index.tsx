@@ -1,36 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ArtInfo } from '../../types/ArtInterfaces';
-import { ArtsList } from '../ArtsList';
-// import { validationInputSchema } from "../../schemas/validationInputSchema";
-// import { useFormik } from "formik";
-import {
-  ButtonLeft,
-  ButtonRight,
-  PageCounter,
-  Pagination,
-  SearchBarBlock,
-  SearchContainer,
-  SearchIcon,
-  SearchInput,
-} from './styled';
+import * as S from './styled';
 
 import search from '@assets/icons/search.svg';
 import { Container } from '@styles/global';
 import { Loader } from '@components/Loader';
 import { EmptySearch } from '@components/EmptySearch';
-
-// type PaginationProps = {
-//   onNextPageClick: () => void;
-//   onPrevPageClick: () => void;
-//   disable: {
-//     left: boolean;
-//     right: boolean;
-//   };
-//   nav?: {
-//     current: number;
-//     total: number;
-//   };
-// };
+import { ArtsList } from '@components/ArtsList';
+import { ArtInfo } from 'types/ArtInterfaces';
 
 export const ArtSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -104,9 +80,9 @@ export const ArtSearch = () => {
   return (
     <Container>
       <form>
-        <SearchContainer>
-          <SearchBarBlock>
-            <SearchInput
+        <S.SearchContainer>
+          <S.SearchBarBlock>
+            <S.SearchInput
               id="value"
               placeholder="Search art, artist, work...."
               // value={values.value}
@@ -114,9 +90,9 @@ export const ArtSearch = () => {
               value={inputValue}
               onChange={(event) => onChange(event.target.value)}
             />
-            <SearchIcon src={search} alt="search" />
-          </SearchBarBlock>
-        </SearchContainer>
+            <S.SearchIcon src={search} alt="search" />
+          </S.SearchBarBlock>
+        </S.SearchContainer>
       </form>
       {/* {errors.value && <p>{errors.value}</p>} */}
 
@@ -125,11 +101,11 @@ export const ArtSearch = () => {
       ) : isSuccessSearch ? (
         <>
           <ArtsList arts={arts} />
-          <Pagination>
-            <ButtonLeft onClick={handlePrevPageClick}></ButtonLeft>
-            <PageCounter>{page}</PageCounter>
-            <ButtonRight onClick={handleNextPageClick}></ButtonRight>
-          </Pagination>
+          <S.Pagination>
+            <S.ButtonLeft onClick={handlePrevPageClick}></S.ButtonLeft>
+            <S.PageCounter>{page}</S.PageCounter>
+            <S.ButtonRight onClick={handleNextPageClick}></S.ButtonRight>
+          </S.Pagination>
         </>
       ) : (
         <EmptySearch />

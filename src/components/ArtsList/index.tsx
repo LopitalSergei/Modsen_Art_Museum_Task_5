@@ -1,5 +1,5 @@
-import { ArtCard } from '../ArtCard';
-import { ArtsListI } from '../../types/ArtInterfaces';
+import { ArtCard } from '@components/ArtCard';
+import { ArtsListI } from 'types/ArtInterfaces';
 import { ArtRow } from './styled';
 import { Loader } from '@components/Loader';
 
