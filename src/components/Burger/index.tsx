@@ -6,7 +6,7 @@ export const Burger = () => {
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
-    setOpen(!open);
+    setOpen((prevState) => !prevState);
   };
 
   return (

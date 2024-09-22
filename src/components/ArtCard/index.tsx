@@ -19,7 +19,7 @@ export const ArtCard = (artCardProps: ArtInfo) => {
 
   const handleClick = () => {
     LocalStorage.insertArt(artCardProps.id);
-    setIsFavorite(!isFavorite);
+    setIsFavorite((prevState) => !prevState);
   };
 
   return (

@@ -30,7 +30,7 @@ export default function Artwork() {
   const handleClick = () => {
     if (artId) {
       LocalStorage.insertArt(+artId);
-      setIsFavorite(!isFavorite);
+      setIsFavorite((prevState) => !prevState);
     }
   };
 
