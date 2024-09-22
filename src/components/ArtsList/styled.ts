@@ -5,13 +5,13 @@ export const ArtRow = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  gap: 25px;
-  margin: 40px 0 24px;
-  padding-bottom: 66px;
+  gap: ${({ theme }) => theme.sizes.artListGapMax};
+  margin: ${({ theme }) => theme.sizes.artListPaddings};
+  padding-bottom: ${({ theme }) => theme.sizes.margin4x};
   overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 85px;
+    gap: ${({ theme }) => theme.sizes.artListGapMax};
   }
 `;

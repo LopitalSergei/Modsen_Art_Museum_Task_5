@@ -5,5 +5,5 @@ export const LoaderBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  padding-top: ${({ theme }) => theme.sizes.margin4x};
 `;

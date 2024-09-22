@@ -1,20 +1,15 @@
 import styled from 'styled-components';
-
 export const Card = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-  /* margin: 20px; */
-
-  height: 444px;
-  width: 387px;
+  height: ${({ theme }) => theme.sizes.artCardHeight};
+  width: ${({ theme }) => theme.sizes.artCardWidth};
 
   position: relative;
   cursor: pointer;
 `;
 
 export const ArtImgWrapper = styled.div`
-  height: 444px;
-  max-width: 387px;
+  height: ${({ theme }) => theme.sizes.artCardHeight};
+  max-width: ${({ theme }) => theme.sizes.artCardWidth};
   overflow: hidden;
 `;
 
@@ -26,7 +21,7 @@ export const ArtImg = styled.img`
 `;
 
 export const ArtDescription = styled.div`
-  height: 132px;
+  height: ${({ theme }) => theme.sizes.artDescriptionHeight};
   width: 90%;
   background-color: ${({ theme }) => theme.colors.background};
   position: absolute;
@@ -35,18 +30,13 @@ export const ArtDescription = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 17px 24px;
-
-  /* @media (max-width: 1000px) {
-    flex-direction: column;
-    align-items: start;
-  } */
+  padding: ${({ theme }) => theme.sizes.artDescriptionPadding};
 `;
 
 export const ArtDescriptionBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 219px;
+  width: ${({ theme }) => theme.sizes.artDescriptionWidth};
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -70,11 +60,11 @@ export const ArtistName = styled.p`
 `;
 
 export const Availability = styled.p`
-  margin-top: 8px;
+  margin-top: ${({ theme }) => theme.sizes.marginMini};
   font-size: ${({ theme }) => theme.fontSize.default};
   line-height: ${({ theme }) => theme.lineHeight.artCard};
   color: ${({ theme }) => theme.colors.text};
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 export const FavoriteMarkBlock = styled.div`
@@ -82,8 +72,8 @@ export const FavoriteMarkBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 59px;
-  width: 59px;
+  height: ${({ theme }) => theme.sizes.iconSize};
+  width: ${({ theme }) => theme.sizes.iconSize};
   border-radius: 50%;
   &:hover {
     background-color: ${({ theme }) => theme.colors.favoriteMark};

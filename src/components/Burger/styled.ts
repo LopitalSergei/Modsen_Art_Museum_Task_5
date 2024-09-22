@@ -6,11 +6,11 @@ interface BurgerInterface {
 }
 
 export const StyledBurger = styled.div<BurgerInterface>`
-  width: 40px;
-  height: 40px;
+  width: ${({ theme }) => theme.sizes.burgerSize};
+  height: ${({ theme }) => theme.sizes.burgerSize};
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: ${({ theme }) => theme.sizes.marginDefault};
+  right: ${({ theme }) => theme.sizes.marginDefault};
   justify-content: space-around;
   flex-direction: column;
   display: none;
@@ -21,10 +21,10 @@ export const StyledBurger = styled.div<BurgerInterface>`
   }
 
   div {
-    width: 40px;
-    height: 3px;
+    width: ${({ theme }) => theme.sizes.burgerSize};
+    height: ${({ theme }) => theme.sizes.burgerLine};
     background: #fff;
-    border-radius: 10px;
+    border-radius: ${({ theme }) => theme.sizes.marginMini};
     transform-origin: 1px;
     transition: all 0.3s linear;
     z-index: 20;
@@ -44,7 +44,7 @@ export const StyledBurger = styled.div<BurgerInterface>`
 export const NavLinksRow = styled.nav<BurgerInterface>`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: ${({ theme }) => theme.sizes.marginDefault};
   position: relative;
   transition: all 0.3s linear;
   z-index: 15;
@@ -57,9 +57,9 @@ export const NavLinksRow = styled.nav<BurgerInterface>`
     position: absolute;
     top: 0;
     right: 0;
-    height: 200px;
-    width: 200px;
-    background: #343333;
+    height: ${({ theme }) => theme.sizes.navBlockSize};
+    width: ${({ theme }) => theme.sizes.navBlockSize};
+    background: ${({ theme }) => theme.colors.text};
   }
 `;
 
@@ -70,8 +70,8 @@ export const NavigationLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  width: 140px;
+  gap: ${({ theme }) => theme.sizes.marginMini};
+  width: ${({ theme }) => theme.sizes.navWidth};
   position: relative;
 
   &:hover {
@@ -83,14 +83,14 @@ export const NavigationLink = styled(NavLink)`
     display: block;
     position: absolute;
     left: 0;
-    bottom: -8px;
+    bottom: -${({ theme }) => theme.sizes.marginMini};
     width: 100%;
     background: ${({ theme }) => theme.colors.secondAccent};
   }
 
   &.active {
     span::before {
-      height: 2px;
+      height: ${({ theme }) => theme.sizes.line};
     }
   }
 `;

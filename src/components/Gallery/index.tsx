@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArtInfo } from '../../types/ArtInterfaces';
 import { ArtsList } from '../ArtsList';
-// import { arts_api } from "../../Constants/constants";
 
 interface API {
   url: string;

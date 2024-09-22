@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const HeaderRow = styled.header`
   background: ${({ theme }) => theme.colors.headerBackground};
-  /* align-items: center; */
-  padding: 32px 0;
+  padding-top: ${({ theme }) => theme.sizes.margin2x};
+  padding-bottom: ${({ theme }) => theme.sizes.margin2x};
 `;
 
 export const HeaderNav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: ${({ theme }) => theme.sizes.marginDefault};
   position: relative;
 `;
 

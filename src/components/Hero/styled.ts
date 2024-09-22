@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const HeroTitle = styled.h1`
-  max-width: 700px;
+  max-width: ${({ theme }) => theme.sizes.heroWidth};
   font-size: ${({ theme }) => theme.fontSize.title};
   text-align: center;
-  margin: 120px 0 72px;
+  margin: ${({ theme }) => theme.sizes.heroMargins};
   font-weight: bold;
 
   span {

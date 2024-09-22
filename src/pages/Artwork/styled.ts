@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const ArtRow = styled.div`
   display: flex;
   align-items: center;
-  margin: 50px 0;
-  gap: 70px;
+  margin-top: ${({ theme }) => theme.sizes.margin4x};
+  margin-bottom: ${({ theme }) => theme.sizes.margin4x};
+  gap: ${({ theme }) => theme.sizes.artListGapMax};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -12,8 +13,8 @@ export const ArtRow = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  height: 444px;
-  max-width: 387px;
+  height: ${({ theme }) => theme.sizes.artCardHeight};
+  max-width: ${({ theme }) => theme.sizes.artCardWidth};
   overflow: hidden;
   position: relative;
 `;
@@ -27,14 +28,14 @@ export const ArtImage = styled.img`
 
 export const FavoriteMarkBlock = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: ${({ theme }) => theme.sizes.marginDefault};
+  right: ${({ theme }) => theme.sizes.marginDefault};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 59px;
-  width: 59px;
+  height: ${({ theme }) => theme.sizes.iconSize};
+  width: ${({ theme }) => theme.sizes.iconSize};
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.favoriteMark};
 `;
@@ -55,29 +56,29 @@ export const ArtDescription = styled.div`
 export const ArtTitle = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.subTitle};
-  margin-bottom: 32px;
+  margin-bottom: ${({ theme }) => theme.sizes.margin2x};
 `;
 
 export const ArtistName = styled.p`
   color: ${({ theme }) => theme.colors.secondAccent};
   font-size: ${({ theme }) => theme.fontSize.artistTitle};
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => theme.sizes.marginDefault};
 `;
 
 export const YearsOfDrawing = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.default};
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 export const Overview = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: ${({ theme }) => theme.sizes.marginDefault};
   div {
     color: ${({ theme }) => theme.colors.text};
     font-size: ${({ theme }) => theme.fontSize.subTitle};
-    margin-bottom: 32px;
+    margin-bottom: ${({ theme }) => theme.sizes.margin2x};
   }
   p {
     color: ${({ theme }) => theme.colors.text};
