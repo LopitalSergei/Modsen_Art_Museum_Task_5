@@ -52,18 +52,11 @@ export const ArtSearch = () => {
   }, [inputValue]);
 
   const handleNextPageClick = () => {
-    const current = page;
-    const next = current + 1;
-    setPage(next);
+    setPage((prev) => prev + 1);
   };
 
   const handlePrevPageClick = () => {
-    const current = page;
-    let prev = current - 1;
-    if (prev <= 1) {
-      prev = 1;
-    }
-    setPage(prev);
+    setPage((prev) => (prev - 1 <= 1 ? 1 : prev - 1));
   };
 
   const onChange = (value: string) => {
