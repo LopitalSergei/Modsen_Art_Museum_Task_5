@@ -1,7 +1,7 @@
 import { Container } from '@styles/global';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArtMoreInfo } from 'types/ArtInterfaces';
+import { ArtMoreInfo } from 'types/artInterfaces';
 import * as S from './styled';
 import { Loader } from '@components/Loader';
 
@@ -9,7 +9,7 @@ import defaultImage from '@assets/defaultImage.svg';
 import { LocalStorage } from '@utils/localStorage';
 import mark from '@assets/icons/bookmark.svg';
 import markActive from '@assets/icons/bookmarkActive.svg';
-import { domain } from '@constants/constants';
+import { DOMAIN } from '@constants/constants';
 
 export default function Artwork() {
   const params = useParams();
@@ -30,7 +30,7 @@ export default function Artwork() {
 
   const handleClick = () => {
     if (artId) {
-      LocalStorage.insertArt(+artId);
+      LocalStorage.insertArt(parseInt(artId));
       setIsFavorite((prevState) => !prevState);
     }
   };
@@ -82,7 +82,7 @@ export default function Artwork() {
               <p>
                 <span>Repository:</span> {art.place_of_origin}
               </p>
-              <p>{art.is_public_domain ? domain.public : domain.private}</p>
+              <p>{art.is_public_domain ? DOMAIN.public : DOMAIN.private}</p>
             </S.Overview>
           </S.DescriptionColumn>
         </S.ArtRow>

@@ -6,8 +6,8 @@ import { Container } from '@styles/global';
 import { Loader } from '@components/Loader';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtsList } from '@components/ArtsList';
-import { ArtInfo } from 'types/ArtInterfaces';
 import { useDebounce } from '@hooks/useDebounce';
+import { ArtInfo } from 'types/artInterfaces';
 
 export const ArtSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -53,15 +53,11 @@ export const ArtSearch = () => {
     setPage((prev) => (prev - 1 <= 1 ? 1 : prev - 1));
   };
 
-  const onChange = (value: string) => {
-    try {
-      setInputValue(() => {
-        setPage(1);
-        return value;
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setInputValue(() => {
+      setPage(1);
+      return e.currentTarget.value;
+    });
   };
 
   return (
@@ -75,7 +71,7 @@ export const ArtSearch = () => {
               // value={values.value}
               // onChange={handleChange}
               value={inputValue}
-              onChange={(event) => onChange(event.target.value)}
+              onChange={onChange}
             />
             <S.SearchIcon src={search} alt="search" />
           </S.SearchBarBlock>

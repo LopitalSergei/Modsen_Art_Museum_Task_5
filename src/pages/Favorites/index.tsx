@@ -1,7 +1,7 @@
 import { ArtsList } from '@components/ArtsList';
 import { LocalStorage } from '@utils/localStorage';
 import { useEffect, useState } from 'react';
-import { ArtInfo } from 'types/ArtInterfaces';
+import { ArtInfo } from 'types/artInterfaces';
 
 export default function Favorites() {
   const [arts, setArts] = useState<ArtInfo[]>([]);

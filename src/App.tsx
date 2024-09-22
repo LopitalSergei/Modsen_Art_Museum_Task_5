@@ -1,12 +1,12 @@
 import { ArtSearch } from './components/ArtSearch';
 import { Gallery } from './components/Gallery';
-import { arts_api } from './constants/constants';
+import { ARTS_API } from './constants/constants';
 
 function App() {
   return (
     <>
       <ArtSearch />
-      <Gallery url={arts_api} />
+      <Gallery url={ARTS_API} />
     </>
   );
 }

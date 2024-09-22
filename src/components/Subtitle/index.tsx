@@ -1,4 +1,4 @@
-import { TextProps } from 'types/ArtInterfaces';
+import { TextProps } from 'types/artInterfaces';
 import { SubTitleText } from './styled';
 
 export const Subtitle = ({ text }: TextProps) => {
