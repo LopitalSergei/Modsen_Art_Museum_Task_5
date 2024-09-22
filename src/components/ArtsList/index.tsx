@@ -9,14 +9,14 @@ export const ArtsList = ({ arts }: ArtsListI) => {
   }
   return (
     <ArtRow>
-      {arts.map(({ id, image_id, title, artist_title, is_public_domain }) => (
+      {arts.map(({ ...art }) => (
         <ArtCard
-          key={id}
-          id={id}
-          image_id={image_id}
-          title={title}
-          artist_title={artist_title}
-          is_public_domain={is_public_domain}
+          key={art.id}
+          id={art.id}
+          image_id={art.image_id}
+          title={art.title}
+          artist_title={art.artist_title}
+          is_public_domain={art.is_public_domain}
         />
       ))}
     </ArtRow>
