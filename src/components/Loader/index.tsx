@@ -1,5 +1,9 @@
-import { LoaderBlock } from './styled';
+import { LoaderBlock, LoaderSpan } from './styled';
 
 export const Loader = () => {
-  return <LoaderBlock>Loading....</LoaderBlock>;
+  return (
+    <LoaderBlock>
+      <LoaderSpan />
+    </LoaderBlock>
+  );
 };
