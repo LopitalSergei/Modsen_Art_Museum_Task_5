@@ -18,13 +18,14 @@ export const ArtSearch = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessSearch, setIsSuccessSearch] = useState(true);
+  const [sort, setSort] = useState('');
   const paginationPages = [
     <S.ActivePageCounter onClick={() => handlePageClick(page)}>
       {page}
     </S.ActivePageCounter>,
   ];
 
-  const url = `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue}&fields=id,title,image_id,artist_title,is_public_domain&page=${page}&limit=3`;
+  const url = `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue}&fields=id,title,image_id,artist_title,is_public_domain&page=${page}&limit=3&sort=${sort}`;
 
   useEffect(() => {
     setIsLoading(true);
@@ -51,7 +52,7 @@ export const ArtSearch = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [debouncedInputValue, page]);
+  }, [debouncedInputValue, page, sort]);
 
   const handleNextPageClick = () => {
     setPage((prev) => prev + 1);
@@ -94,6 +95,10 @@ export const ArtSearch = () => {
     }
   }
 
+  const sorting = () => {
+    setSort(sort ? '' : 'id');
+  };
+
   return (
     <Container>
       <form>
@@ -114,12 +119,11 @@ export const ArtSearch = () => {
         <Loader />
       ) : isSuccessSearch ? (
         <>
+          <S.SortButton onClick={sorting}></S.SortButton>
           <ArtsList arts={arts} />
           <S.Pagination>
             <S.ButtonLeft onClick={handlePrevPageClick}></S.ButtonLeft>
-
             {paginationPages.map((item) => item)}
-
             <S.ButtonRight onClick={handleNextPageClick}></S.ButtonRight>
           </S.Pagination>
         </>

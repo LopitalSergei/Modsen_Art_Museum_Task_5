@@ -5,5 +5,6 @@ export const EmptyBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: ${({ theme }) => theme.sizes.margin2x};
+  padding: ${({ theme }) => theme.sizes.margin2x};
+  font-size: ${({ theme }) => theme.fontSize.artistTitle};
 `;
