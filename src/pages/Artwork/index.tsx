@@ -6,7 +6,7 @@ import { Container } from '@styles/global';
 import mark from '@assets/icons/bookmark.svg';
 import { DOMAIN } from '@constants/constants';
 import { Loader } from '@components/ui/Loader';
-import { ArtMoreInfo } from 'types/ArtInterfaces';
+import { ArtMoreInfo } from 'types/artInterfaces';
 import { LocalStorage } from '@utils/localStorage';
 import defaultImage from '@assets/defaultImage.svg';
 import markActive from '@assets/icons/bookmarkActive.svg';
@@ -37,25 +37,41 @@ export default function Artwork() {
   };
 
   useEffect(() => {
-    const dataFetch = async () => {
-      const artData = await fetch(
-        `https://api.artic.edu/api/v1/artworks/${artId}?fields=id,title,image_id,artist_title,is_public_domain,date_start,date_end,credit_line,place_of_origin,dimensions`
-      ).then((res) => res.json());
-      setArt(artData.data);
-    };
+    try {
+      const dataFetch = async () => {
+        const artData = await fetch(
+          `https://api.artic.edu/api/v1/artworks/${artId}?fields=id,title,image_id,artist_title,is_public_domain,date_start,date_end,credit_line,place_of_origin,dimensions`
+        ).then((res) => res.json());
+        setArt(artData.data);
+      };
 
-    dataFetch();
+      dataFetch();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   if (art) {
+    const {
+      image_id,
+      title,
+      artist_title,
+      date_start,
+      date_end,
+      dimensions,
+      credit_line,
+      place_of_origin,
+      is_public_domain,
+    } = art;
+
     return (
       <Container>
         <S.ArtRow>
           <S.ImageContainer>
             <S.ArtImage
-              src={getArtImage(art.image_id)}
+              src={getArtImage(image_id)}
               alt="Image not found"
-              title={art.title}
+              title={title}
               onError={({ currentTarget }) => {
                 currentTarget.src = defaultImage;
               }}
@@ -66,24 +82,24 @@ export default function Artwork() {
           </S.ImageContainer>
           <S.DescriptionColumn>
             <S.ArtDescription>
-              <S.ArtTitle>{art.title}</S.ArtTitle>
-              <S.ArtistName>{art.artist_title}</S.ArtistName>
+              <S.ArtTitle>{title}</S.ArtTitle>
+              <S.ArtistName>{artist_title}</S.ArtistName>
               <S.YearsOfDrawing>
-                {art.date_start} - {art.date_end}
+                {date_start} - {date_end}
               </S.YearsOfDrawing>
             </S.ArtDescription>
             <S.Overview>
               <div>Overview</div>
               <p>
-                <span>Dimensions:</span> {art.dimensions}
+                <span>Dimensions:</span> {dimensions}
               </p>
               <p>
-                <span>Credit Line:</span> {art.credit_line}
+                <span>Credit Line:</span> {credit_line}
               </p>
               <p>
-                <span>Repository:</span> {art.place_of_origin}
+                <span>Repository:</span> {place_of_origin}
               </p>
-              <p>{art.is_public_domain ? DOMAIN.public : DOMAIN.private}</p>
+              <p>{is_public_domain ? DOMAIN.public : DOMAIN.private}</p>
             </S.Overview>
           </S.DescriptionColumn>
         </S.ArtRow>

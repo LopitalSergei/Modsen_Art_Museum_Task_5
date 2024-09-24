@@ -7,7 +7,7 @@ export const ArtRow = styled.div`
   margin-bottom: ${({ theme }) => theme.sizes.margin4x};
   gap: ${({ theme }) => theme.sizes.artListGapMax};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.media.tablet}) {
     flex-direction: column;
   }
 `;

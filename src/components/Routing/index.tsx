@@ -11,7 +11,7 @@ export const Routing: FC = () => {
         <Route path={routes.app.path} element={<routes.app.element />}>
           <Route index element={<routes.home.element />} />
           <Route
-            path={routes.artWork.path}
+            path={`${routes.artWork.path}/:id`}
             element={<routes.artWork.element />}
           />
           <Route

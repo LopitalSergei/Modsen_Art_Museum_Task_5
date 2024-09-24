@@ -1,7 +1,9 @@
-import { TextProps } from 'types/ArtInterfaces';
+import { FC } from 'react';
+
+import { TextProps } from 'types/artInterfaces';
 
 import { TitleText } from './styled';
 
-export const Title = ({ text }: TextProps) => {
+export const Title: FC<TextProps> = ({ text }) => {
   return <TitleText>{text}</TitleText>;
 };

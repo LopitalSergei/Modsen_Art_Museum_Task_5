@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { Container } from '@styles/global';
 import search from '@assets/icons/search.svg';
@@ -6,11 +6,11 @@ import { Loader } from '@components/ui/Loader';
 import { ArtsList } from '@components/ArtsList';
 import { useDebounce } from '@hooks/useDebounce';
 import { EmptySearch } from '@components/EmptySearch';
-import { ArtInfo, PaginationInfo } from 'types/ArtInterfaces';
+import { ArtInfo, PaginationInfo } from 'types/artInterfaces';
 
 import * as S from './styled';
 
-export const ArtSearch = () => {
+export const ArtSearch: FC = () => {
   const [inputValue, setInputValue] = useState('');
   const debouncedInputValue = useDebounce(inputValue);
 

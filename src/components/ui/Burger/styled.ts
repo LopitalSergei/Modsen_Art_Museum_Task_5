@@ -16,7 +16,7 @@ export const StyledBurger = styled.div<BurgerInterface>`
   display: none;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.media.tablet}) {
     display: flex;
   }
 
@@ -49,7 +49,7 @@ export const NavLinksRow = styled.nav<BurgerInterface>`
   transition: all 0.3s linear;
   z-index: 15;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.media.tablet}) {
     display: ${({ open }) => (open ? 'flex' : 'none')};
     flex-direction: column;
     align-items: center;

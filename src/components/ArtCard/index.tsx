@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { routes } from '@constants/routes';
 import mark from '@assets/icons/bookmark.svg';
 import { DOMAIN } from '@constants/constants';
-import { ArtInfo } from 'types/ArtInterfaces';
+import { ArtInfo } from 'types/artInterfaces';
 import { LocalStorage } from '@utils/localStorage';
 import defaultImage from '@assets/defaultImage.svg';
 import markActive from '@assets/icons/bookmarkActive.svg';
 
 import * as S from './styled';
 
-export const ArtCard = (artCardProps: ArtInfo) => {
+export const ArtCard: FC<ArtInfo> = (artCardProps) => {
   const [isFavorite, setIsFavorite] = useState(() => {
     return LocalStorage.getArts()?.includes(artCardProps.id.toString());
   });
@@ -27,7 +28,7 @@ export const ArtCard = (artCardProps: ArtInfo) => {
 
   return (
     <S.Card>
-      <Link to={`/artwork/${artCardProps.id}`}>
+      <Link to={`${routes.artWork.path}/${artCardProps.id}`}>
         <S.ArtImgWrapper>
           <S.ArtImg
             src={getArtImage(artCardProps.image_id)}

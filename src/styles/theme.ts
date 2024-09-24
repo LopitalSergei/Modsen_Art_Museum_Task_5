@@ -59,6 +59,9 @@ export const theme = {
     favoriteMark: '#F9F9F9',
     favoriteMarkActive: '#FBD7B24D',
   },
+  media: {
+    tablet: '768px',
+  },
 };
 
 // export type ITheme = typeof theme;

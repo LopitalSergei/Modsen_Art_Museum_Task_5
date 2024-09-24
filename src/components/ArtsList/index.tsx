@@ -1,24 +1,19 @@
+import { FC } from 'react';
+
 import { ArtCard } from '@components/ArtCard';
 import { Loader } from '@components/ui/Loader';
-import { ArtsListI } from 'types/ArtInterfaces';
+import { ArtsListI } from 'types/artInterfaces';
 
 import { ArtRow } from './styled';
 
-export const ArtsList = ({ arts }: ArtsListI) => {
+export const ArtsList: FC<ArtsListI> = ({ arts }) => {
   if (!arts?.length) {
     return <Loader />;
   }
   return (
     <ArtRow>
-      {arts.map(({ ...art }) => (
-        <ArtCard
-          key={art.id}
-          id={art.id}
-          image_id={art.image_id}
-          title={art.title}
-          artist_title={art.artist_title}
-          is_public_domain={art.is_public_domain}
-        />
+      {arts.map((props) => (
+        <ArtCard key={props.id} {...props} />
       ))}
     </ArtRow>
   );

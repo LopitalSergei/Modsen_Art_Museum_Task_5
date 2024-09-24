@@ -20,7 +20,7 @@ export const routes = {
     element: Favorites,
   },
   artWork: {
-    path: '/artwork/:id',
+    path: '/artwork',
     element: Artwork,
   },
   notFound: {
@@ -32,12 +32,12 @@ export const routes = {
 export const navLinks = [
   {
     page: 'Home',
-    href: '/',
+    href: routes.app.path,
     icon: home,
   },
   {
     page: 'Favorites',
-    href: '/favorites',
+    href: routes.favorites.path,
     icon: bookmark,
   },
 ];

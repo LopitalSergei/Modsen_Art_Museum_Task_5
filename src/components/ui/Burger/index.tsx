@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import { navLinks } from '@constants/routes';
 
 import { NavigationLink, NavLinksRow, StyledBurger } from './styled';
 
-export const Burger = () => {
+export const Burger: FC = () => {
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
