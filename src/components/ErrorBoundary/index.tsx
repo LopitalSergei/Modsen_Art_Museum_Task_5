@@ -1,4 +1,5 @@
 import { Component, ErrorInfo } from 'react';
+
 import { ErrorMessage } from './styled';
 
 interface Props {

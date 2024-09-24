@@ -1,15 +1,17 @@
-import { Container } from '@styles/global';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ArtMoreInfo } from 'types/ArtInterfaces';
-import * as S from './styled';
-import { Loader } from '@components/ui/Loader';
 
-import defaultImage from '@assets/defaultImage.svg';
-import { LocalStorage } from '@utils/localStorage';
+import { useParams } from 'react-router-dom';
+
+import { Container } from '@styles/global';
 import mark from '@assets/icons/bookmark.svg';
-import markActive from '@assets/icons/bookmarkActive.svg';
 import { DOMAIN } from '@constants/constants';
+import { Loader } from '@components/ui/Loader';
+import { ArtMoreInfo } from 'types/ArtInterfaces';
+import { LocalStorage } from '@utils/localStorage';
+import defaultImage from '@assets/defaultImage.svg';
+import markActive from '@assets/icons/bookmarkActive.svg';
+
+import * as S from './styled';
 
 export default function Artwork() {
   const params = useParams();

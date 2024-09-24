@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { NavigationLink, NavLinksRow, StyledBurger } from './styled';
+
 import { navLinks } from '@constants/routes';
+
+import { NavigationLink, NavLinksRow, StyledBurger } from './styled';
 
 export const Burger = () => {
   const [open, setOpen] = useState(false);

@@ -1,8 +1,8 @@
+import Home from '@pages/Home';
 import App from '@components/App';
 import Artwork from '@pages/Artwork';
-import Favorites from '@pages/Favorites';
-import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
+import Favorites from '@pages/Favorites';
 import home from '@assets/icons/home.svg';
 import bookmark from '@assets/icons/bookmarkIcon.svg';
 

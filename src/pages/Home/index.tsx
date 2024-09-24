@@ -1,8 +1,9 @@
-import { ArtSearch } from '@components/ArtSearch';
-import { Hero } from '@components/Hero';
-import { OtherWorks } from '@components/OtherWorks';
-import { LocalStorage } from '@utils/localStorage';
 import { useEffect } from 'react';
+
+import { Hero } from '@components/Hero';
+import { ArtSearch } from '@components/ArtSearch';
+import { LocalStorage } from '@utils/localStorage';
+import { OtherWorks } from '@components/OtherWorks';
 
 export default function Home() {
   useEffect(() => {

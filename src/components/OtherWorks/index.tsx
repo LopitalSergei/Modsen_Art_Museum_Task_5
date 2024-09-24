@@ -1,7 +1,8 @@
+import { Container } from '@styles/global';
+import { Title } from '@components/ui/Title';
 import { OtherArts } from '@components/OtherArts';
 import { Subtitle } from '@components/ui/Subtitle';
-import { Title } from '@components/ui/Title';
-import { Container } from '@styles/global';
+
 import { Wrapper } from './styled';
 
 export const OtherWorks = () => {

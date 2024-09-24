@@ -1,14 +1,15 @@
 import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
-import * as S from './styled';
 
 import mark from '@assets/icons/bookmark.svg';
-import markActive from '@assets/icons/bookmarkActive.svg';
-import defaultImage from '@assets/defaultImage.svg';
-
-import { LocalStorage } from '@utils/localStorage';
 import { DOMAIN } from '@constants/constants';
 import { ArtInfo } from 'types/ArtInterfaces';
+import { LocalStorage } from '@utils/localStorage';
+import defaultImage from '@assets/defaultImage.svg';
+import markActive from '@assets/icons/bookmarkActive.svg';
+
+import * as S from './styled';
 
 export const ArtCard = (artCardProps: ArtInfo) => {
   const [isFavorite, setIsFavorite] = useState(() => {

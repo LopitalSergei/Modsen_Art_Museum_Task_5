@@ -1,9 +1,12 @@
 import { FC } from 'react';
-import { HeaderNav, HeaderRow, Logo } from './styled';
-import { Container } from '@styles/global';
-import museumLogo from '@assets/logos/museum-logo.svg';
+
 import { Link } from 'react-router-dom';
+
+import { Container } from '@styles/global';
 import { Burger } from '@components/ui/Burger';
+import museumLogo from '@assets/logos/museum-logo.svg';
+
+import { HeaderNav, HeaderRow, Logo } from './styled';
 
 export const Header: FC = () => {
   return (

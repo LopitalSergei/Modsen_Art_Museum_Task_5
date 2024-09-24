@@ -1,6 +1,7 @@
-import { ArtsList } from '@components/ArtsList';
 import { useEffect, useState } from 'react';
+
 import { ArtInfo } from 'types/ArtInterfaces';
+import { ArtsList } from '@components/ArtsList';
 
 interface API {
   url: string;

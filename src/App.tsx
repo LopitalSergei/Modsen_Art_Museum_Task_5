@@ -1,6 +1,6 @@
-import { ArtSearch } from './components/ArtSearch';
 import { Gallery } from './components/Gallery';
 import { ARTS_API } from './constants/constants';
+import { ArtSearch } from './components/ArtSearch';
 
 function App() {
   return (

@@ -1,8 +1,10 @@
-import { Container } from '@styles/global';
-import { FooterNav, FooterRow, Logo, LogoContainer } from './styled';
 import { Link } from 'react-router-dom';
-import museumLogo from '@assets/logos/museum-logo-2.svg';
+
+import { Container } from '@styles/global';
 import modsenLogo from '@assets/logos/modsen-logo.svg';
+import museumLogo from '@assets/logos/museum-logo-2.svg';
+
+import { FooterNav, FooterRow, Logo, LogoContainer } from './styled';
 
 export const Footer = () => {
   return (

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { HeroContainer, HeroTitle } from './styled';
 
 export const Hero: FC = () => {

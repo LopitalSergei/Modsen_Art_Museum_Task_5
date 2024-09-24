@@ -1,7 +1,8 @@
+import { ThemeProvider } from 'styled-components';
+
+import { theme } from '@styles/theme.ts';
 import { createRoot } from 'react-dom/client';
 import { GlobalStyle } from '@styles/global.ts';
-import { theme } from '@styles/theme.ts';
-import { ThemeProvider } from 'styled-components';
 import { Routing } from '@components/Routing/index.tsx';
 import { ErrorBoundary } from '@components/ErrorBoundary';
 
