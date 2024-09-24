@@ -14,7 +14,6 @@ import { DOMAIN } from '@constants/constants';
 export default function Artwork() {
   const params = useParams();
   const artId = params.id;
-  console.log(artId);
 
   const [art, setArt] = useState<ArtMoreInfo | undefined>();
 

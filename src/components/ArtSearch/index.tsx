@@ -18,6 +18,11 @@ export const ArtSearch = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessSearch, setIsSuccessSearch] = useState(true);
+  const paginationPages = [
+    <S.ActivePageCounter onClick={() => handlePageClick(page)}>
+      {page}
+    </S.ActivePageCounter>,
+  ];
 
   const url = `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue}&fields=id,title,image_id,artist_title,is_public_domain&page=${page}&limit=3`;
 
@@ -30,7 +35,6 @@ export const ArtSearch = () => {
         if (artData.data.length !== 0) {
           setArts(artData.data);
           setPaginationInfo(artData.pagination);
-          console.log(paginationInfo);
 
           setIsSuccessSearch(true);
         } else {
@@ -70,6 +74,26 @@ export const ArtSearch = () => {
     });
   };
 
+  if (paginationInfo) {
+    if (paginationInfo.total_pages - page < 4) {
+      for (let i = 1; i < paginationInfo.total_pages - page + 1; i++) {
+        paginationPages.push(
+          <S.PageCounter onClick={() => handlePageClick(page + i)}>
+            {page + i}
+          </S.PageCounter>
+        );
+      }
+    } else {
+      for (let i = 1; i < 4; i++) {
+        paginationPages.push(
+          <S.PageCounter onClick={() => handlePageClick(page + i)}>
+            {page + i}
+          </S.PageCounter>
+        );
+      }
+    }
+  }
+
   return (
     <Container>
       <form>
@@ -78,8 +102,6 @@ export const ArtSearch = () => {
             <S.SearchInput
               id="value"
               placeholder="Search art, artist, work...."
-              // value={values.value}
-              // onChange={handleChange}
               value={inputValue}
               onChange={onChange}
             />
@@ -87,7 +109,6 @@ export const ArtSearch = () => {
           </S.SearchBarBlock>
         </S.SearchContainer>
       </form>
-      {/* {errors.value && <p>{errors.value}</p>} */}
 
       {isLoading ? (
         <Loader />
@@ -97,18 +118,8 @@ export const ArtSearch = () => {
           <S.Pagination>
             <S.ButtonLeft onClick={handlePrevPageClick}></S.ButtonLeft>
 
-            <S.ActivePageCounter onClick={() => handlePageClick(page)}>
-              {page}
-            </S.ActivePageCounter>
-            <S.PageCounter onClick={() => handlePageClick(page + 1)}>
-              {page + 1}
-            </S.PageCounter>
-            <S.PageCounter onClick={() => handlePageClick(page + 2)}>
-              {page + 2}
-            </S.PageCounter>
-            <S.PageCounter onClick={() => handlePageClick(page + 3)}>
-              {page + 3}
-            </S.PageCounter>
+            {paginationPages.map((item) => item)}
+
             <S.ButtonRight onClick={handleNextPageClick}></S.ButtonRight>
           </S.Pagination>
         </>
