@@ -5,7 +5,7 @@ export const ArtRow = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  gap: ${({ theme }) => theme.sizes.artListGapMax};
+  gap: ${({ theme }) => theme.sizes.artListGapDefault};
   margin: ${({ theme }) => theme.sizes.artListPaddings};
   padding-bottom: ${({ theme }) => theme.sizes.margin4x};
   overflow: hidden;

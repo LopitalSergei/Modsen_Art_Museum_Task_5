@@ -2,13 +2,13 @@ import { FC, useEffect, useState } from 'react';
 
 import { Container } from '@styles/global';
 import search from '@assets/icons/search.svg';
-import { Loader } from '@components/ui/Loader';
 import { ArtsList } from '@components/ArtsList';
 import { useDebounce } from '@hooks/useDebounce';
 import { EmptySearch } from '@components/EmptySearch';
 import { ArtInfo, PaginationInfo } from 'types/artInterfaces';
 
 import * as S from './styled';
+import { dataFetch } from '@utils/dataFetch';
 
 export const ArtSearch: FC = () => {
   const [inputValue, setInputValue] = useState('');
@@ -17,7 +17,6 @@ export const ArtSearch: FC = () => {
   const [arts, setArts] = useState<ArtInfo[]>([]);
   const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>();
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
   const [isSuccessSearch, setIsSuccessSearch] = useState(true);
   const [sort, setSort] = useState('');
   const paginationPages = [
@@ -29,30 +28,16 @@ export const ArtSearch: FC = () => {
   const url = `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue}&fields=id,title,image_id,artist_title,is_public_domain&page=${page}&limit=3&sort=${sort}`;
 
   useEffect(() => {
-    setIsLoading(true);
-
-    try {
-      const dataFetch = async (url: string) => {
-        const artData = await fetch(url).then((res) => res.json());
-        if (artData.data.length !== 0) {
-          setArts(artData.data);
-          setPaginationInfo(artData.pagination);
-
-          setIsSuccessSearch(true);
-        } else {
-          handlePrevPageClick();
-          setIsSuccessSearch(false);
-        }
-      };
-
-      dataFetch(url);
-    } catch (err) {
-      console.log(err);
-
-      setArts([]);
-    } finally {
-      setIsLoading(false);
-    }
+    dataFetch(url).then((res) => {
+      if (res.data.length !== 0) {
+        setArts(res.data);
+        setPaginationInfo(res.pagination);
+        setIsSuccessSearch(true);
+      } else {
+        handlePrevPageClick();
+        setIsSuccessSearch(false);
+      }
+    });
   }, [debouncedInputValue, page, sort]);
 
   const handleNextPageClick = () => {
@@ -116,9 +101,7 @@ export const ArtSearch: FC = () => {
         </S.SearchContainer>
       </form>
 
-      {isLoading ? (
-        <Loader />
-      ) : isSuccessSearch ? (
+      {isSuccessSearch ? (
         <>
           <S.SortButton onClick={sorting}></S.SortButton>
           <ArtsList arts={arts} />

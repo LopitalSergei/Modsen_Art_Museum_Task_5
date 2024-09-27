@@ -3,14 +3,23 @@ export const Card = styled.div`
   height: ${({ theme }) => theme.sizes.artCardHeight};
   width: ${({ theme }) => theme.sizes.artCardWidth};
 
+  flex: 1;
+  transition: 0.35s ease-in-out;
   position: relative;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    flex: 2;
+  }
 `;
 
 export const ArtImgWrapper = styled.div`
   height: ${({ theme }) => theme.sizes.artCardHeight};
   max-width: ${({ theme }) => theme.sizes.artCardWidth};
   overflow: hidden;
+  margin: 0 auto;
 `;
 
 export const ArtImg = styled.img`

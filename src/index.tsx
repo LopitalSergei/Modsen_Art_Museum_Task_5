@@ -12,6 +12,5 @@ createRoot(document.getElementById('root')!).render(
       <Routing />
     </ThemeProvider>
     <GlobalStyle />
-    {/*  <App /> */}
   </ErrorBoundary>
 );
