@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import { Container } from '@styles/global';
 import search from '@assets/icons/search.svg';
@@ -28,16 +28,20 @@ export const ArtSearch: FC = () => {
   const url = `https://api.artic.edu/api/v1/artworks/search?q=${debouncedInputValue}&fields=id,title,image_id,artist_title,is_public_domain&page=${page}&limit=3&sort=${sort}`;
 
   useEffect(() => {
-    dataFetch(url).then((res) => {
-      if (res.data.length !== 0) {
-        setArts(res.data);
-        setPaginationInfo(res.pagination);
-        setIsSuccessSearch(true);
-      } else {
-        handlePrevPageClick();
-        setIsSuccessSearch(false);
-      }
-    });
+    const fetchMemo = useCallback(() => {
+      dataFetch(url).then((res) => {
+        if (res.data.length !== 0) {
+          setArts(res.data);
+          setPaginationInfo(res.pagination);
+          setIsSuccessSearch(true);
+        } else {
+          handlePrevPageClick();
+          setIsSuccessSearch(false);
+        }
+      });
+    }, []);
+
+    fetchMemo();
   }, [debouncedInputValue, page, sort]);
 
   const handleNextPageClick = () => {

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -21,10 +21,10 @@ export const ArtCard: FC<ArtInfo> = (artCardProps) => {
     return `https://www.artic.edu/iiif/2/${identifier}/full/843,/0/default.jpg`;
   };
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     LocalStorage.insertArt(artCardProps.id);
     setIsFavorite((prevState) => !prevState);
-  };
+  }, []);
 
   return (
     <S.Card>
